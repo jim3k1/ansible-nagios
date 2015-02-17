@@ -3,12 +3,16 @@
   sudo: true
   apt: pkg={{ item }} state=present force=true update_cache=yes
   with_items: nagios_packages
+  tags:
+    - install-nagios-packages
 
 - name: install legacy packages
   sudo: true
   apt: pkg={{ item }} state=present force=true update_cache=yes
   with_items: nagios_legacy_packages
   when: legacy | default(false)
+  tags:
+    - install-nagios-packages
 
 # Create nagios users and groups.
 - name: create nagios group
@@ -16,12 +20,16 @@
   group: >
     gid=3000
     name=nagios
+  tags:
+    - configure-nagios-groups
 
 - name: create nagcmd group
   sudo: true
   group: >
     gid=3001
     name=nagcmd
+  tags:
+    - configure-nagios-groups
 
 - name: create nagios user
   sudo: true
@@ -32,12 +40,16 @@
     name=nagios
     home=/usr/local/nagios
     comment="Nagios Admin"
+  tags:
+    - configure-nagios-user
 
 - name: add user www-data to nagcmd group
   sudo: true
   user: >
     groups=nagcmd
     name=www-data
+  tags:
+    - configure-nagios-user
 
 # build and install nagios.
 - tasks:
@@ -46,10 +58,14 @@
 # Build and install nagios check plugins.
 - tasks:
   include: build-plugins.yml
+  tags:
+    - build-plugins
 
 # Build and install nagios remote checks.
 - tasks:
   include: build-nrpe.yml
+  tags:
+    - build-nrpe
 
 # Setup apache.
 - tasks:
