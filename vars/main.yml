@@ -30,10 +30,6 @@ nagios_packages:
   - libwww-perl
   - libcrypt-ssleay-perl
 
-nagios_legacy_packages:
-  - libperl5.14
-  - libsnmp15
-
 nagios_version: 4.0.8
 nagios_plugins_version: 2.0.3
 nagios_nrpe_version: 2.15
