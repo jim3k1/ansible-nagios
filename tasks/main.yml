@@ -110,3 +110,20 @@
   sudo: true
   service: name=nagios state=restarted
   notify: restart apache
+
+- name: copy nagios deb package into remote
+  sudo: true
+  copy: >
+    src=nagios-plugins_2.0.3-1_amd64.deb
+    dest=/tmp/nagios-plugins_2.0.3-1_amd64.deb
+    owner=root
+    group=root
+    mode=0644
+  tags:
+    - copy-deb-package
+
+- name: install nagios plugins deb package
+  sudo: true
+  apt: deb=/tmp/nagios-plugins_2.0.3-1_amd64.deb
+  tags:
+    - install-nagios-deb-package
