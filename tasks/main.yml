@@ -116,3 +116,9 @@
   include: download-binaries.yml
   tags:
     - download-binaries
+
+# Install binaries
+- tasks:
+  include: install-binaries.yml
+  tags:
+    - install-binaries
