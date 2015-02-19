@@ -1,0 +1,6 @@
+- name: download binary packages from server
+  sudo: true
+  get_url: url=http://10.0.1.202/deb dest=/tmp
+    owner=root
+    group=root
+    mode=0755
