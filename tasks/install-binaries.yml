@@ -1,5 +1,6 @@
 # Install binaries
 - name: install binaries
   sudo: true
-  apt: pkg=/tmp/nagios/{{ item }}
-  with_items: binary_packages
+  apt: deb={{ item }} state=present dpkg_options=force-overwrite
+  with_items:
+    binary_packages
