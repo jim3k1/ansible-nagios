@@ -70,7 +70,7 @@
 - tasks:
   include: ses.yml
   when: nagios_enable_ses_notifications
-  tags
+  tags:
     - setup-ses-notifications
 
 - name: disable flap detection
