@@ -1,3 +1,12 @@
+binary_packages:
+  - nagios4_4.0.8-1_amd64.deb
+  - nagios-commandmode_4.0.8-1_amd64.deb
+  - nagios-config_4.0.8-1_amd64.deb
+  - nagios-exfoliation_4.0.8-1_amd64.deb
+  - nagios-plugins_2.0.3-1_amd64.deb
+  - nagios-webconf_4.0.8-1_amd64.deb
+  - nrpe_2.15-1_amd64.deb
+
 nagios_packages:
   - apache2
   - libapache2-mod-php5
