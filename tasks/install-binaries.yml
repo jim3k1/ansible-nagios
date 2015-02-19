@@ -1,0 +1,5 @@
+# Install binaries
+- name: install binaries
+  sudo: true
+  apt: pkg=/tmp/nagios/{{ item }}
+  with_items: binary_packages
