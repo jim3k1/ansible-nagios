@@ -4,5 +4,7 @@
 
 - name: download binary packages from server
   sudo: true
-  get_url: url=http://10.0.1.202/deb/{{ item }} dest=/tmp/nagios
-  with_items: binary_packages
+  get_url: url=http://{{ server | mandatory }}/deb/{{ item | basename }} dest=/tmp/nagios
+  with_flattened:
+    - binary_nagios_packages
+    - binary_nagios_plugins_packages
