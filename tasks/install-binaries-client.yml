@@ -1,0 +1,6 @@
+# Install binaries
+- name: install binaries for clients
+  sudo: true
+  apt: deb={{ item }} state=present dpkg_options=force-overwrite
+  with_items:
+    binary_nagios_plugins_packages
