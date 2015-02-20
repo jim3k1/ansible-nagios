@@ -2,5 +2,6 @@
 - name: install binaries
   sudo: true
   apt: deb={{ item }} state=present dpkg_options=force-overwrite
-  with_items:
-    binary_packages
+  with_flattened:
+    - binary_nagios_packages
+    - binary_nagios_plugins_packages
