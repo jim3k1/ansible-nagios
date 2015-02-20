@@ -19,7 +19,6 @@ nagios_packages:
   - wget
   - curl
   - daemon
-  - apt-file
   - libnet-snmp-perl
   - libpq5
   - libradius1
@@ -28,17 +27,12 @@ nagios_packages:
   - libtalloc2
   - libtdb1
   - libwbclient0
-  - samba-common
-  - samba-common-bin
-  - smbclient
   - snmp
-  - whois
-  - libmysqlclient15-dev
   - checkinstall
   - python-passlib
   - libwww-perl
-  - libcrypt-ssleay-perl
   - npm
+  - traceroute
 
 nagios_version: 4.0.8
 nagios_plugins_version: 2.0.3
