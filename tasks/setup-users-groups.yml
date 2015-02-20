@@ -1,0 +1,22 @@
+# Create nagios users and groups.
+- name: create nagios group
+  sudo: true
+  group: >
+    gid=3000
+    name=nagios
+
+- name: create nagcmd group
+  sudo: true
+  group: >
+    gid=3001
+    name=nagcmd
+
+- name: create nagios user
+  sudo: true
+  user: >
+    uid=3000
+    group=nagios
+    groups=nagcmd
+    name=nagios
+    home=/usr/local/nagios
+    comment="Nagios Admin"
