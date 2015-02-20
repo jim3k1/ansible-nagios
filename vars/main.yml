@@ -1,11 +1,17 @@
 binary_nagios_packages:
-  - [ '/tmp/nagios/nrpe_2.15-1_amd64.deb' ]
+  - [ 'nrpe_2.15-1_amd64.deb' ]
 
 binary_nagios_plugins_packages:
-  - [ '/tmp/nagios/nagios-plugins_2.0.3-1_amd64.deb' ]
+  - [ 'nagios-plugins_2.0.3-1_amd64.deb' ]
 
+# Server address
 server: 10.0.1.202
+# Path to deb files
 binarypath: deb
+# path in remote where download the deb files to
+downloadpath: /tmp/nagios
+# Protocol used by server
+protocol: http
 
 nagios_packages:
   - apache2
