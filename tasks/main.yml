@@ -42,18 +42,6 @@
   tags:
     - setup-apache
 
-# download binaries
-- tasks:
-  include: download-binaries.yml
-  tags:
-    - download-binaries
-
-# Install binaries for server
-- tasks:
-  include: install-binaries.yml
-  tags:
-    - install-binaries
-
 # download binaries for clients
 - tasks:
   include: download-binaries-client.yml
@@ -65,6 +53,7 @@
   include: install-binaries-client.yml
   tags:
     - install-binaries-client
+
 # Setup pagerduty.
 - tasks:
   include: pagerduty.yml
