@@ -1,10 +1,11 @@
 binary_nagios_packages:
-  - [ '/tmp/nagios/nagios4_4.0.8-1_amd64.deb', '/tmp/nagios/nagios-commandmode_4.0.8-1_amd64.deb', '/tmp/nagios/nagios-config_4.0.8-1_amd64.deb', '/tmp/nagios/nagios-exfoliation_4.0.8-1_amd64.deb', '/tmp/nagios/nagios-webconf_4.0.8-1_amd64.deb', '/tmp/nagios/nrpe_2.15-1_amd64.deb' ]
+  - [ '/tmp/nagios/nrpe_2.15-1_amd64.deb' ]
 
 binary_nagios_plugins_packages:
   - [ '/tmp/nagios/nagios-plugins_2.0.3-1_amd64.deb' ]
 
 server: 10.0.1.202
+binarypath: deb
 
 nagios_packages:
   - apache2
