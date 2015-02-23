@@ -55,7 +55,7 @@ nagios_log_directory: /var/log
 nagios_pagerduty_key: xxxxxxxxxxxxxxxxxxxxxx
 nagios_enable_pagerduty_notifications: true
 
-nagios_enable_ses_notifications: true
+nagios_enable_ses_notifications: false
 nagios_aws_access_key_id: xxxxxxxxxxxxxxxx
 nagios_aws_access_key_secret: xxxxxxxxxxxxxxx
 nagios_ses_region: email.us-east-1.amazonaws.com
