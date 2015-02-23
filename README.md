@@ -8,7 +8,7 @@ Features
 
 * Installs and configures Nagios 4 (not currently available through a PPA).
 * Installs the [Pagerduty integration](https://www.pagerduty.com/docs/guides/nagios-integration-guide/)
-* Support for sending notifications via [SES](http://github.com/npm/notify-by-ses)
+* Support for sending notifications via [SES](http://github.com/npm/notify-by-ses). You need to install laggyluke.nodejs role from galaxy
 * Installs NRPE, for performing remote checks.
 * Installs a recent build of nagios-plugins.
 
