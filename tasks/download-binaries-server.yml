@@ -1,0 +1,5 @@
+- name: download binary packages from server
+  sudo: true
+  get_url: url={{ protocol | mandatory }}://{{ server | mandatory }}/{{ binarypath | mandatory }}/{{ item }} dest={{ downloadpath | mandatory }}
+  with_items:
+    binary_nagios_packages

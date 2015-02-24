@@ -1,0 +1,6 @@
+# Install binaries
+- name: install binaries for server
+  sudo: true
+  apt: deb={{ downloadpath | mandatory }}/{{ item }} state=present dpkg_options=force-overwrite
+  with_items:
+    binary_nagios_packages

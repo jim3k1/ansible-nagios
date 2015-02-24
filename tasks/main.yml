@@ -48,7 +48,17 @@
   tags:
     - create-nagios-temp-folder
 
+# download binaries for server
+- tasks:
+  include: download-binaries-server.yml
+  tags:
+    - download-binaries-server
 
+# Install binaries for server
+- tasks:
+  include: install-binaries-server.yml
+  tags:
+    - install-binaries-server
 
 # download binaries for clients
 - tasks:
