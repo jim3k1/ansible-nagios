@@ -42,6 +42,14 @@
   tags:
     - setup-apache
 
+# Create nagios tmp folder
+- tasks:
+    include: create-nagios-temp-folder.yml
+  tags:
+    - create-nagios-temp-folder
+
+
+
 # download binaries for clients
 - tasks:
   include: download-binaries-client.yml
