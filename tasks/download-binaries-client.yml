@@ -1,7 +1,3 @@
-- name: create nagios temp folder
-  sudo: true
-  file: path={{ downloadpath | mandatory }} state=directory owner=root group=root mode=0755
-
 - name: download binary packages from server
   sudo: true
   get_url: url={{ protocol | mandatory }}://{{ server | mandatory }}/{{ binarypath | mandatory }}/{{ item }} dest={{ downloadpath | mandatory }}
