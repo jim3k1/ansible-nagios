@@ -44,7 +44,7 @@
 
 # Create nagios tmp folder
 - tasks:
-    include: create-nagios-temp-folder.yml
+  include: create-nagios-temp-folder.yml
   tags:
     - create-nagios-temp-folder
 
