@@ -30,8 +30,8 @@
 - name: copy nagios.pem
   sudo: true
   copy: >
-    src=nagios.pem
-    dest=/etc/apache2/ssl/nagios.pem
+    src={{ nagios_ssl_cert_pem | basename }}
+    dest={{ nagios_ssl_cert_pem | mandatory }}
     owner=root
     group=root
     mode=640
@@ -39,8 +39,8 @@
 - name: copy nagios.key
   sudo: true
   copy: >
-    src=nagios.key
-    dest=/etc/apache2/ssl/nagios.key
+    src={{ nagios_ssl_cert_key | basename }}
+    dest={{ nagios_ssl_cert_key | mandatory }}
     owner=root
     group=root
     mode=640
