@@ -27,15 +27,6 @@
     group=root
     mode=770
 
-- name: create certs directory
-  sudo: true
-  file: >
-    state=directory
-    path=/etc/apache2/ssl
-    owner=root
-    group=root
-    mode=770
-
 - name: copy nagios.pem
   sudo: true
   copy: >
