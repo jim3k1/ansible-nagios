@@ -44,7 +44,7 @@ downloadpath: path-where-download-files
 protocol: protocol
 ```
 
-* See `/vars/main.yml` for more configuration options.
+* See `/defaults/main.yml` for more configuration options.
 
 How it Works?
 ------------
