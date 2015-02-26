@@ -27,12 +27,14 @@
 # Build and install nagios check plugins.
 - tasks:
   include: build-plugins.yml
+  when: build_nagios_plugins
   tags:
     - build-plugins
 
 # Build and install nagios remote checks.
 - tasks:
   include: build-nrpe.yml
+  when: build_nagios_nrpe
   tags:
     - build-nrpe
 
