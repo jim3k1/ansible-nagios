@@ -3,5 +3,3 @@
   sudo: true
   apt: pkg={{ item }} state=present force=true update_cache=yes
   with_items: nagios_packages
-  tags:
-    - install-nagios-packages
