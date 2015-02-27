@@ -1,92 +1,64 @@
 # Setup nagios user and group
 - tasks:
   include: setup-users-groups.yml
-  tags:
-    - setup-nagios-user-group
 
 - name: add user www-data to nagcmd group
   sudo: true
   user: >
     groups=nagcmd
     name=www-data
-  tags:
-    - configure-www-data-user
 
 # Install needed nagios packages for build nagios from source
 - tasks:
   include: install-nagios-packages.yml
-  tags:
-    - install-nagios-packages
 
 # build and install nagios.
 - tasks:
   include: build-nagios.yml
-  tags:
-    - build-nagios
 
 # Build and install nagios check plugins.
 - tasks:
   include: build-plugins.yml
   when: build_nagios_plugins
-  tags:
-    - build-plugins
 
 # Build and install nagios remote checks.
 - tasks:
   include: build-nrpe.yml
   when: build_nagios_nrpe
-  tags:
-    - build-nrpe
 
 # Setup apache.
 - tasks:
   include: apache.yml
-  tags:
-    - setup-apache
 
 # Create nagios tmp folder
 - tasks:
   include: create-nagios-temp-folder.yml
-  tags:
-    - create-nagios-temp-folder
 
 # download binaries for server
 - tasks:
   include: download-binaries-server.yml
-  tags:
-    - download-binaries-server
 
 # Install binaries for server
 - tasks:
   include: install-binaries-server.yml
-  tags:
-    - install-binaries-server
 
 # download binaries for clients
 - tasks:
   include: download-binaries-client.yml
-  tags:
-    - download-binaries-client
 
 # Install binaries for clients
 - tasks:
   include: install-binaries-client.yml
-  tags:
-    - install-binaries-client
 
 # Setup pagerduty.
 - tasks:
   include: pagerduty.yml
   when: nagios_enable_pagerduty_notifications
-  tags:
-    - setup-pagerduty
 
 # Setup SES for notifications.
 - tasks:
   include: ses.yml
   when: nagios_enable_ses_notifications
-  tags:
-    - setup-ses-notifications
 
 - name: disable flap detection
   sudo: true
@@ -94,8 +66,6 @@
     dest=/usr/local/nagios/etc/nagios.cfg
     line="enable_flap_detection=0"
     regexp="^enable_flap_detection.*$"
-  tags:
-    - disable-flap-detection
 
 - name: overwrite contacts.cfg
   sudo: true
@@ -105,8 +75,6 @@
     owner=nagios
     group=nagios
     mode=640
-  tags:
-    - overwrite-contacts
 
 - name: install nagios upstart script
   sudo: true
@@ -116,12 +84,8 @@
     owner=nagios
     group=nagios
     mode=640
-  tags:
-    - install-nagios-upstart-script
 
 - name: restart nagios
   sudo: true
   service: name=nagios state=restarted
   notify: restart apache
-  tags:
-    - restart-nagios
