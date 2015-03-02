@@ -4,15 +4,6 @@ binary_nagios_packages:
 binary_nagios_plugins_packages:
   - [ 'nagios-plugins_2.0.3-1_amd64.deb' ]
 
-# Server address
-server: 10.0.1.201
-# Path to deb files
-binarypath: deb
-# path in remote where download the deb files to
-downloadpath: /tmp/nagios
-# Protocol used by server
-protocol: http
-
 # Build packages
 # Set to true in case you want to build these
 # packages from source
@@ -40,7 +31,6 @@ nagios_packages:
   - libtdb1
   - libwbclient0
   - snmp
-  - checkinstall
   - python-passlib
   - libwww-perl
   - npm
