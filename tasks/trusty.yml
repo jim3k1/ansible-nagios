@@ -3,18 +3,25 @@
   include: setup-users-groups.yml
 
 - name: add user www-data to nagcmd group
-  sudo: true
+  sudo: True
   user: >
     groups=nagcmd
     name=www-data
 
+# Check if nagios is already installed
+- name: Check if nagios is already installed
+  stat: path="/usr/local/nagios/etc/nagios.cfg"
+  register: nagioscfg
+
 # Install needed nagios packages for build nagios from source
 - tasks:
   include: install-nagios-packages.yml
+  when: not nagioscfg.stat.exists
 
 # build and install nagios.
 - tasks:
   include: build-nagios.yml
+  when: not nagioscfg.stat.exists
 
 # Build and install nagios check plugins.
 - tasks:
