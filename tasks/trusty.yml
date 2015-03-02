@@ -37,6 +37,16 @@
 - tasks:
   include: apache.yml
 
+# Check if nrpe package is already installed
+- name: Check if nrpe is already installed
+  stat: path="/usr/local/nagios/libexec/check_nrpe"
+  register: nrpe
+
+# Check if plugins package is already installed
+- name: Check if plugins package is already installed
+  stat: path="/usr/local/nagios/libexec/check_users"
+  register: plugins
+
 # Create nagios tmp folder
 - tasks:
   include: create-nagios-temp-folder.yml
@@ -44,18 +54,22 @@
 # download binaries for server
 - tasks:
   include: download-binaries-server.yml
+  when: not nrpe.stat.exists
 
 # Install binaries for server
 - tasks:
   include: install-binaries-server.yml
+  when: not nrpe.stat.exists
 
 # download binaries for clients
 - tasks:
   include: download-binaries-client.yml
+  when: not plugins.stat.exists
 
 # Install binaries for clients
 - tasks:
   include: install-binaries-client.yml
+  when: not plugins.stat.exists
 
 # Setup pagerduty.
 - tasks:
