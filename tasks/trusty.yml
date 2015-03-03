@@ -1,3 +1,12 @@
+# XXX plugins and nrpe packages are both built from sources.
+# Once we can download the binaries from our local server,
+# just uncomment these tasks:
+# - Create nagios tmp folder
+# - download binaries for server
+# - Install binaries for server
+# - download binaries for clients
+# - Install binaries for clients
+
 # Setup nagios user and group
 - tasks:
   include: setup-users-groups.yml
@@ -23,20 +32,6 @@
   include: build-nagios.yml
   when: not nagioscfg.stat.exists
 
-# Build and install nagios check plugins.
-- tasks:
-  include: build-plugins.yml
-  when: build_nagios_plugins
-
-# Build and install nagios remote checks.
-- tasks:
-  include: build-nrpe.yml
-  when: build_nagios_nrpe
-
-# Setup apache.
-- tasks:
-  include: apache.yml
-
 # Check if nrpe package is already installed
 - name: Check if nrpe is already installed
   stat: path="/usr/local/nagios/libexec/check_nrpe"
@@ -47,29 +42,43 @@
   stat: path="/usr/local/nagios/libexec/check_users"
   register: plugins
 
-# Create nagios tmp folder
+# Build and install nagios check plugins.
 - tasks:
-  include: create-nagios-temp-folder.yml
+  include: build-plugins.yml
+  when: not plugins.stat.exists
+
+# Build and install nagios remote checks.
+- tasks:
+  include: build-nrpe.yml
+  when: not nrpe.stat.exists
+
+# Setup apache.
+- tasks:
+  include: apache.yml
+
+# Create nagios tmp folder
+# - tasks:
+  # include: create-nagios-temp-folder.yml
 
 # download binaries for server
-- tasks:
-  include: download-binaries-server.yml
-  when: not nrpe.stat.exists
+# - tasks:
+  # include: download-binaries-server.yml
+  # when: not nrpe.stat.exists
 
 # Install binaries for server
-- tasks:
-  include: install-binaries-server.yml
-  when: not nrpe.stat.exists
+# - tasks:
+  # include: install-binaries-server.yml
+  # when: not nrpe.stat.exists
 
 # download binaries for clients
-- tasks:
-  include: download-binaries-client.yml
-  when: not plugins.stat.exists
+# - tasks:
+  # include: download-binaries-client.yml
+  # when: not plugins.stat.exists
 
 # Install binaries for clients
-- tasks:
-  include: install-binaries-client.yml
-  when: not plugins.stat.exists
+# - tasks:
+  # include: install-binaries-client.yml
+  # when: not plugins.stat.exists
 
 # Setup pagerduty.
 - tasks:
