@@ -55,14 +55,14 @@ nagios_aws_access_key_id: xxxxxxxxxxxxxxxx
 nagios_aws_access_key_secret: xxxxxxxxxxxxxxx
 nagios_ses_region: email.us-east-1.amazonaws.com
 
-# nagios_tarball: http://downloads.sourceforge.net/project/nagios/nagios-4.x/nagios-4.0.8/nagios-4.0.8.tar.gz
-nagios_tarball: http://{{ server }}/src/nagios-{{ nagios_version }}.tar.gz
+# XXX Download from local server instead of sourceforge.
+nagios_tarball: http://downloads.sourceforge.net/project/nagios/nagios-4.x/nagios-4.0.8/nagios-{{ nagios_version }}.tar.gz
 nagios_tarball_sha256sum: 8b268d250c97851775abe162f46f64724f95f367d752ae4630280cc5d368ca4b
 
-nagios_plugin_tarball: https://www.nagios-plugins.org/download/nagios-plugins-2.0.3.tar.gz
+nagios_plugin_tarball: https://www.nagios-plugins.org/download/nagios-plugins-{{ nagios_plugins_version }}.tar.gz
 nagios_plugin_tarball_sha256sum: 8f0021442dce0138f0285ca22960b870662e28ae8973d49d439463588aada04a
 
-nagios_nrpe_tarball: http://downloads.sourceforge.net/project/nagios/nrpe-2.x/nrpe-2.15/nrpe-2.15.tar.gz
+nagios_nrpe_tarball: http://downloads.sourceforge.net/project/nagios/nrpe-2.x/nrpe-{{ nagios_nrpe_version }}/nrpe-{{ nagios_nrpe_version }}.tar.gz
 nagios_nrpe_tarball_sha256sum: 66383b7d367de25ba031d37762d83e2b55de010c573009c6f58270b137131072
 
 nagios_ssl_cert_pem: /etc/ssl/certs/{{ansible_fqdn}}-cert.pem
