@@ -4,12 +4,6 @@ binary_nagios_packages:
 binary_nagios_plugins_packages:
   - [ 'nagios-plugins_2.0.3-1_amd64.deb' ]
 
-# Build packages
-# Set to true in case you want to build these
-# packages from source
-build_nagios_plugins: false
-build_nagios_nrpe: false
-
 nagios_packages:
   - apache2
   - libapache2-mod-php5
@@ -55,7 +49,9 @@ nagios_aws_access_key_id: xxxxxxxxxxxxxxxx
 nagios_aws_access_key_secret: xxxxxxxxxxxxxxx
 nagios_ses_region: email.us-east-1.amazonaws.com
 
-# XXX Download from local server instead of sourceforge.
+# XXX TODO: Download from local server instead of sourceforge.
+# Just uncomment next line and fill needed variables properly
+# nagios_tarball: http://{{ server }}/src/nagios-{{ nagios_version }}.tar.gz
 nagios_tarball: http://downloads.sourceforge.net/project/nagios/nagios-4.x/nagios-4.0.8/nagios-{{ nagios_version }}.tar.gz
 nagios_tarball_sha256sum: 8b268d250c97851775abe162f46f64724f95f367d752ae4630280cc5d368ca4b
 
