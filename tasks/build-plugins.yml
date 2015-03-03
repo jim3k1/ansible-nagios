@@ -19,4 +19,4 @@
 
 - name: install nagios plugins package
   sudo: true
-  command: "checkinstall --pkgname=nagios-plugins --requires='perl,libc6' --default chdir={{nagios_build_directory}}/nagios-plugins-{{nagios_plugins_version}}"
+  command: "make install chdir={{nagios_build_directory}}/nagios-plugins-{{nagios_plugins_version}}"
