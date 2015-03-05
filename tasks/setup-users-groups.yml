@@ -2,21 +2,21 @@
 - name: create nagios group
   sudo: true
   group: >
-    gid=3000
-    name=nagios
+    gid={{ nagios_group_gid }}
+    name={{ nagios_group }}
 
 - name: create nagcmd group
   sudo: true
   group: >
-    gid=3001
-    name=nagcmd
+    gid={{ nagcmd_group_gid }}
+    name={{ nagcmd_group }}
 
 - name: create nagios user
   sudo: true
   user: >
-    uid=3000
-    group=nagios
-    groups=nagcmd
-    name=nagios
-    home=/usr/local/nagios
+    uid={{ nagios_user_uid }}
+    group={{ nagios_user_group }}
+    groups={{ nagios_user_groups }}
+    name={{ nagios_user }}
+    home=/usr/local/{{ nagios_user }}
     comment="Nagios Admin"
