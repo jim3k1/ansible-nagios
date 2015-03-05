@@ -24,9 +24,9 @@ Configuration
 To get things up and running on an Ubuntu machine, here are the variables you will need to set:
 
 ```yaml
-nagios_user: nagiosadmin
-nagios_password: nagiosadmin
-nagios_host: nagios.example.com
+nagios_admin_user: nagiosadmin
+nagios_admin_password: nagiosadmin
+nagios_host: <your_hostname>
 nagios_pagerduty_key: xxxxxxxxxxxxxxxxxxxxx
 nagios_admin_email: ops@example.com
 nagios_amdin_name: 'Nagios Admin'
