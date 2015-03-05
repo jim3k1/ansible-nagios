@@ -1,12 +1,12 @@
 <VirtualHost *:80>
-    ServerAdmin {{nagios_admin_email}}
+    ServerAdmin {{ nagios_admin_email }}
     ServerName {{ ansible_fqdn }}
     ServerAlias {{ ansible_fqdn }}
     Redirect / https://{{ ansible_fqdn }}/
 </VirtualHost>
 
 <VirtualHost *:443>
-    ServerAdmin {{nagios_admin_email}}
+    ServerAdmin {{ nagios_admin_email }}
     ServerName {{ ansible_fqdn }}
 
     ScriptAlias /nagios/cgi-bin "/usr/local/nagios/sbin"
