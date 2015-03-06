@@ -37,12 +37,15 @@ nagios_build_directory: /tmp
 nagios_ssl_lib_path: /usr/lib/x86_64-linux-gnu
 nagios_log_directory: /var/log
 
+nagios_admin_email: admin@example.com
+nagios_admin_name: 'Nagios Admin'
+nagios_admin_user: nagiosadmin
+nagios_admin_password: nagiosadmin
+nagios_host: nagios.example.com
+
 nagios_group: nagios
-nagios_group_gid: 3000
 nagcmd_group: nagcmd
-nagcmd_group_gid: 3001
 nagios_user: nagios
-nagios_user_uid: 3000
 nagios_user_group: nagios
 nagios_user_groups: nagcmd
 
