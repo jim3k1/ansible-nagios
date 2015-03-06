@@ -29,7 +29,7 @@
 
 - name: configure
   sudo: true
-  command: "./configure --prefix=/usr/local/nagios --with-nagios-user=nagios --with-nagios-group=nagios --with-command-user=nagios --with-command-group=nagcmd --with-httpd-conf=/etc/apache2/sites-available chdir={{nagios_build_directory}}/nagios-{{nagios_version}}"
+  command: "./configure --prefix=/usr/local/nagios --with-nagios-user={{ nagios_user }} --with-nagios-group={{ nagios_user_group }} --with-command-user={{ nagios_user }} --with-command-group={{ nagios_user_groups }} --with-httpd-conf=/etc/apache2/sites-available chdir={{nagios_build_directory}}/nagios-{{nagios_version}}"
 
 - name: make
   sudo: true
