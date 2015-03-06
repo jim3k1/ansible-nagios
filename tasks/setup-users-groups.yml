@@ -2,19 +2,16 @@
 - name: create nagios group
   sudo: true
   group: >
-    gid={{ nagios_group_gid }}
     name={{ nagios_group }}
 
 - name: create nagcmd group
   sudo: true
   group: >
-    gid={{ nagcmd_group_gid }}
     name={{ nagcmd_group }}
 
 - name: create nagios user
   sudo: true
   user: >
-    uid={{ nagios_user_uid }}
     group={{ nagios_user_group }}
     groups={{ nagios_user_groups }}
     name={{ nagios_user }}
