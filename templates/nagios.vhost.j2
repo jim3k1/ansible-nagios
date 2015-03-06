@@ -1,7 +1,7 @@
 <VirtualHost *:80>
     ServerAdmin {{ nagios_admin_email }}
     ServerName {{ ansible_fqdn }}
-    ServerAlias {{ ansible_fqdn }}
+    ServerAlias {{ nagios_host }}
     Redirect / https://{{ ansible_fqdn }}/
 </VirtualHost>
 
