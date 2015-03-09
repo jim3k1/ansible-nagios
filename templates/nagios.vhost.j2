@@ -1,43 +1,30 @@
 <VirtualHost *:80>
+
     ServerAdmin {{ nagios_admin_email }}
     ServerName {{ ansible_fqdn }}
     ServerAlias {{ nagios_host }}
-    Redirect / https://{{ ansible_fqdn }}/
-</VirtualHost>
 
-<VirtualHost *:443>
-    ServerAdmin {{ nagios_admin_email }}
-    ServerName {{ ansible_fqdn }}
+    DocumentRoot "/usr/local/nagios/share"
 
     ScriptAlias /nagios/cgi-bin "/usr/local/nagios/sbin"
-
-    RedirectMatch ^/$ /nagios/
+    ScriptAlias /cgi-bin "/usr/local/nagios/sbin"
 
     <Directory "/usr/local/nagios/sbin">
        Options ExecCGI
        AllowOverride None
        Order allow,deny
        Allow from all
-       AuthName "Nagios Access"
-       AuthType Basic
-       AuthUserFile /usr/local/nagios/etc/htpasswd.users
-       Require valid-user
+       AuthType None
+       Require all granted
     </Directory>
-
-    Alias /nagios "/usr/local/nagios/share"
 
     <Directory "/usr/local/nagios/share">
        Options None
        AllowOverride None
        Order allow,deny
        Allow from all
-       AuthName "Nagios Access"
-       AuthType Basic
-       AuthUserFile /usr/local/nagios/etc/htpasswd.users
-       Require valid-user
+       AuthType None
+       Require all granted
     </Directory>
 
-    SSLEngine On
-    SSLCertificateFile {{nagios_ssl_cert_pem}}
-    SSLCertificateKeyFile {{nagios_ssl_cert_key}}
 </VirtualHost>
