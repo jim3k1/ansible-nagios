@@ -4,20 +4,6 @@
     groups=nagios
     name=apache
 
-- name: add passwords for nagios
-  sudo: true
-  htpasswd: >
-    name="{{nagios_admin_user}}"
-    password="{{nagios_admin_password}}"
-    path=/usr/local/nagios/etc/htpasswd.users
-
-- name: set permissions on new password file
-  sudo: true
-  file: >
-    path=/usr/local/nagios/etc/htpasswd.users
-    owner=nagios
-    group=nagcmd
-
 - name: copy nagios vhost
   sudo: true
   template: >
@@ -26,26 +12,15 @@
     owner=root
     group=root
     mode=640
-  when: not (legacy | default(false))
-
-- name: copy nagios vhost for pre-trusty
-  sudo: true
-  template: >
-    src=nagios.vhost.j2
-    dest=/etc/apache2/sites-available/nagios
-    owner=root
-    group=root
-    mode=640
-  when: legacy | default(false)
 
 - name: enable nagios vhost
   sudo: true
   command: "a2ensite nagios"
 
-- name: enable apache ssl
+- name: disable default vhost
   sudo: true
-  command: "a2enmod ssl"
+  command: "a2dissite 000-default"
 
-- name: enable apache ssl
+- name: enable apache cgi
   sudo: true
   command: "a2enmod cgi"
