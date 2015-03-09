@@ -52,12 +52,12 @@ How it Works?
 * Create a playbook that references the nagios role.
 * Set the appropriate variables.
 * Run this role on a clean server.
-* You will now be able to access nagios on the host at **https://your-host/nagios**.
+* You will now be able to access nagios on the host at **http://your-host**.
 
 Ansible-Nagios-Config
 ---------------------
 
-This Ansible role is designed to be used along with [Ansible-Nagios-Config](http://github.com/npm/ansible-nagios-config).
+This Ansible role is designed to be used along with Ansible-Nagios-Config
 Use this role to set up Nagios' configuration.
 
 Compatibility
