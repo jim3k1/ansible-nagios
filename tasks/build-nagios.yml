@@ -58,3 +58,7 @@
 - name: install the exfoliation theme for the Nagios web interface
   sudo: true
   command: "make install-exfoliation chdir={{nagios_build_directory}}/nagios-{{nagios_version}}"
+
+- name: configure cgi file
+  sudo: true
+  template: src=cgi.cfg.j2 dest=/usr/local/nagios/etc/cgi.cfg owner=nagios group=nagios mode=0644
