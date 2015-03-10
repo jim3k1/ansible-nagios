@@ -4,10 +4,13 @@
     ServerName {{ ansible_fqdn }}
     ServerAlias {{ nagios_host }}
 
-    DocumentRoot "/usr/local/nagios/share"
-
-    ScriptAlias /nagios/cgi-bin "/usr/local/nagios/sbin"
-    ScriptAlias /cgi-bin "/usr/local/nagios/sbin"
+    {% if nagios_url == "/" -%}
+        ScriptAlias "/cgi-bin" "/usr/local/nagios/sbin"
+    DocumentRoot /usr/local/nagios/share
+    {% else -%}
+        ScriptAlias {{ nagios_url ~ "/cgi-bin" }} "/usr/local/nagios/sbin"
+    RedirectMatch ^/$ {{ nagios_url }}
+    {% endif %}
 
     <Directory "/usr/local/nagios/sbin">
        Options ExecCGI
@@ -17,6 +20,10 @@
        AuthType None
        Require all granted
     </Directory>
+
+    {% if nagios_url != "/" -%}
+        Alias {{ nagios_url }} "/usr/local/nagios/share"
+    {% endif %}
 
     <Directory "/usr/local/nagios/share">
        Options None
