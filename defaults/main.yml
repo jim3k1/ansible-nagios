@@ -48,6 +48,7 @@ nagcmd_group: nagcmd
 nagios_user: nagios
 nagios_user_group: nagios
 nagios_user_groups: nagcmd
+nagios_url: /
 
 # Enable/Disable authentication in nagios cgi.conf file
 authentication: 1
