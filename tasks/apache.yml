@@ -13,6 +13,15 @@
     group=root
     mode=640
 
+- name: configure cgi file
+  sudo: true
+  template: src=cgi.cfg.j2 dest=/usr/local/nagios/etc/cgi.cfg owner=nagios group=nagios mode=0644
+
+# Needed because cgi_base_url variable is hardcoded in php file
+- name: configure php file
+  sudo: true
+  template: src=config.inc.php.j2 dest=/usr/local/nagios/share/config.inc.php owner=nagios group=nagios mode=0644
+
 - name: enable nagios vhost
   sudo: true
   command: "a2ensite nagios"
