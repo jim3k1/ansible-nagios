@@ -69,5 +69,3 @@ This role has been tested on the following Linux distributions:
 
 * Precise.
 * Trusty.
-
-Please open an issue if you confirm the role works on other distributions.
